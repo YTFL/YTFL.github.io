@@ -3,127 +3,280 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YTFL - Projects</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a;
-            color: #f1f5f9;
-            margin: 0;
-            padding: 0;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: center;
-        }
+    
+    <!-- SEO Optimization -->
+    <title>YTFL | Portfolio & Systems Engineer Hub</title>
+    <meta name="description" content="Official portfolio of YTFL. Discover developer tools, Progressive Web Apps, scalable backend systems, and automation-driven architectures.">
+    <meta name="keywords" content="YTFL, software engineer, backend developer, automation, systems, AttendMate, HonZuki, PDFark-Mode, SimpliMap, WarMatrix">
+    <meta name="author" content="YTFL">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text x='50' y='64' font-family='sans-serif' font-weight='900' font-size='44' fill='%23ffffff' text-anchor='middle'>Y<tspan fill='%23e11d48'>.</tspan></text></svg>">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ytfl.github.io/">
+    <meta property="og:title" content="YTFL | Portfolio & Systems Engineer Hub">
+    <meta property="og:description" content="Discover developer tools, Progressive Web Apps, scalable backend systems, and automation-driven architectures by YTFL.">
+    <meta property="og:image" content="https://github-readme-activity-graph.vercel.app/graph?username=YTFL&bg_color=000000&color=e11d48&line=e11d48&point=e11d48&area=true&hide_border=true">
 
-        .container {
-            max-width: 600px;
-            width: 100%;
-            padding: 80px 20px;
-            text-align: center;
-            box-sizing: border-box;
-        }
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://ytfl.github.io/">
+    <meta property="twitter:title" content="YTFL | Portfolio & Systems Engineer Hub">
+    <meta property="twitter:description" content="Discover developer tools, Progressive Web Apps, scalable backend systems, and automation-driven architectures by YTFL.">
 
-        .logo {
-            font-size: 3.5rem;
-            margin-bottom: 16px;
-        }
-
-        h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin: 0 0 12px 0;
-            color: #ffffff;
-        }
-
-        .tagline {
-            font-size: 1.1rem;
-            color: #94a3b8;
-            margin-bottom: 40px;
-            line-height: 1.5;
-        }
-
-        .projects-card {
-            border: 1px solid #334155;
-            border-radius: 8px;
-            padding: 24px;
-            background-color: #1e293b;
-            text-align: left;
-        }
-
-        .projects-card h2 {
-            font-size: 1.25rem;
-            margin-top: 0;
-            margin-bottom: 16px;
-            color: #ffffff;
-            border-bottom: 1px solid #334155;
-            padding-bottom: 8px;
-        }
-
-        .project-item {
-            display: block;
-            border: 1px solid #475569;
-            border-radius: 6px;
-            padding: 16px;
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            background-color: #0f172a;
-            transition: border-color 0.2s ease, background-color 0.2s ease;
-        }
-
-        .project-item:hover {
-            border-color: #3b82f6;
-            background-color: #1e293b;
-        }
-
-        .project-desc {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 400;
-            color: #94a3b8;
-            margin-top: 4px;
-        }
-
-        footer {
-            width: 100%;
-            padding: 20px 0;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 0.85rem;
-            border-top: 1px solid #334155;
-        }
-
-        footer a {
-            color: #3b82f6;
-            text-decoration: none;
-        }
-
-        footer a:hover {
-            text-decoration: underline;
-        }
-    </style>
+    <!-- Fonts & Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Local Stylesheet -->
+    <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div class="container">
-        <div class="logo">🚀</div>
-        <h1>YTFL</h1>
-        <p class="tagline">Welcome to my GitHub Pages Hub. Here you can find my active open-source projects.</p>
 
-        <div class="projects-card">
-            <h2>Active Projects</h2>
-            <a href="https://ytfl.github.io/AttendMate-Bunk-Calculator-Attendance-Tracker/" class="project-item">
-                AttendMate
-                <span class="project-desc">Timetable and attendance tracker with Google Calendar synchronization.</span>
-            </a>
-        </div>
+    <!-- Cyber Background Elements -->
+    <div class="bg-grid"></div>
+    <div class="bg-orbs">
+        <div class="orb orb-red"></div>
+        <div class="orb orb-cyan"></div>
     </div>
+    <canvas id="particles-canvas"></canvas>
 
-    <footer>
-        <p>&copy; 2026 YTFL. All rights reserved. | Contact: <a href="mailto:venkatpiyush327@gmail.com">venkatpiyush327@gmail.com</a></p>
+    <!-- Sticky Navigation Bar -->
+    <header id="nav-header">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo" id="logo-link">
+                YTFL<span>.</span>github.io
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#hero" id="nav-home">Home</a></li>
+                    <li><a href="#projects" id="nav-projects">Projects</a></li>
+                    <li><a href="#contact" id="nav-contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="social-icons">
+                <a href="https://github.com/YTFL" target="_blank" rel="noopener" aria-label="GitHub" id="social-github">
+                    <i class="fa-brands fa-github"></i>
+                </a>
+                <a href="mailto:venkatpiyush327@gmail.com" aria-label="Email" id="social-email">
+                    <i class="fa-regular fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero" id="hero">
+            <div class="hero-grid">
+                <!-- Left Column: Intro and CTAs -->
+                <div class="hero-info">
+                    <h1 class="hero-title">
+                        Building scalable, <br>
+                        <span class="hero-highlight">automation-driven</span> <br>
+                        systems.
+                    </h1>
+                    <p class="hero-desc">
+                        Hi, I'm YTFL. I design logic-driven tools to simplify complex processes, automate manual workflows, and build reliable backend architectures. Focused on clarity, optimization, and efficiency.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn-portfolio btn-portfolio-primary" id="cta-projects">
+                            Explore Projects <i class="fa-solid fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn-portfolio btn-portfolio-secondary" id="cta-contact">
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right Column: Interactive Code Editor Simulation -->
+                <div class="code-window-wrapper">
+                    <div class="code-window">
+                        <div class="window-header">
+                            <div class="window-dots">
+                                <div class="window-dot dot-red"></div>
+                                <div class="window-dot dot-yellow"></div>
+                                <div class="window-dot dot-green"></div>
+                            </div>
+                            <div class="window-title">fido@ytfl-terminal</div>
+                        </div>
+                        <div class="window-tab">
+                            <i class="fa-solid fa-code"></i> developer.json
+                        </div>
+                        <pre class="code-content"><code><span class="bracket">{</span>
+  <span class="key">"name"</span>: <span class="string">"YTFL"</span>,
+  <span class="key">"role"</span>: <span class="string">"Systems Engineer"</span>,
+  <span class="key">"focus"</span>: <span class="bracket">[</span>
+    <span class="string">"Automation"</span>,
+    <span class="string">"Scalable Backend"</span>,
+    <span class="string">"AI Workflows"</span>
+  <span class="bracket">]</span>,
+  <span class="key">"stack"</span>: <span class="bracket">{</span>
+    <span class="key">"primary"</span>: <span class="bracket">[</span><span class="string">"TypeScript"</span>, <span class="string">"Python"</span>, <span class="string">"Flutter"</span><span class="bracket">]</span>,
+    <span class="key">"frameworks"</span>: <span class="bracket">[</span><span class="string">"FastAPI"</span>, <span class="string">"React"</span>, <span class="string">"Next.js"</span><span class="bracket">]</span>,
+    <span class="key">"databases"</span>: <span class="bracket">[</span><span class="string">"MySQL"</span>, <span class="string">"MongoDB"</span>, <span class="string">"Firestore"</span><span class="bracket">]</span>
+  <span class="bracket">}</span>,
+  <span class="key">"philosophy"</span>: <span class="string">"Minimize manual loops, maximize logic flow."</span>
+<span class="bracket">}</span></code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Projects Grid Section -->
+        <section class="section" id="projects">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">A showcase of developer utilities, Progressive Web Apps, and multiplayer dashboards.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- AttendMate -->
+                <article class="project-card" id="project-attendmate">
+                    <div class="card-stripe"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">AttendMate</h3>
+                        <p class="project-desc">A smart student attendance tracker and bunk calculator featuring seamless Google Calendar synchronization and timetable scheduling.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/YTFL/AttendMate-Bunk-Calculator-Attendance-Tracker" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-attendmate">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="https://ytfl.github.io/AttendMate-Bunk-Calculator-Attendance-Tracker/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-attendmate">
+                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- HonZuki -->
+                <article class="project-card" id="project-honzuki">
+                    <div class="card-stripe"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">HonZuki</h3>
+                        <p class="project-desc">A modern Progressive Web App (PWA) for organizing physical book collections, reading progress, series tracking, and dynamic themes.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/YTFL/HonZuki-BookTracker" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-honzuki">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="https://hon-zuki.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-honzuki">
+                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- PDFark-Mode -->
+                <article class="project-card" id="project-pdfark">
+                    <div class="card-stripe"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">PDFark-Mode</h3>
+                        <p class="project-desc">A lightweight and fully private client-side converter that processes PDF files locally in your browser to transform them into high-contrast dark mode.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/YTFL/PDFark-Mode-PDF-Darkmode-Converter" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-pdfark">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="https://pdfark-mode.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-pdfark">
+                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- SimpliMap -->
+                <article class="project-card" id="project-simplimap">
+                    <div class="card-stripe"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">SimpliMap</h3>
+                        <p class="project-desc">A Flutter application dedicated to generating, analyzing, and minimizing complex Boolean expressions using interactive Karnaugh Maps.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/YTFL/SimpliMap-K-map-Simplifier" class="btn-portfolio btn-portfolio-secondary" style="flex: 1;" target="_blank" rel="noopener" id="btn-code-simplimap">
+                                <i class="fa-brands fa-github"></i> View Repository
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- WarMatrix -->
+                <article class="project-card" id="project-warmatrix">
+                    <div class="card-stripe"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">WarMatrix</h3>
+                        <p class="project-desc">A futuristic strategy board game platform equipped with multiplayer modes, dynamic battlefields, and client-server synchronization.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/YTFL/WarMatrix" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-warmatrix">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="https://warmatrix.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-warmatrix">
+                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- HireLoop -->
+                <article class="project-card" id="project-hireloop">
+                    <div class="card-stripe"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">HireLoop</h3>
+                        <p class="project-desc">A comprehensive platform that automates and streamlines campus recruitment cycles for students, recruiters, and placement portals.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/YTFL/HireLoop" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-hireloop">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="https://hire-loop-gamma.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-hireloop">
+                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Miles of India -->
+                <article class="project-card" id="project-milesofindia">
+                    <div class="card-stripe"></div>
+                    <div class="project-info">
+                        <h3 class="project-title">Miles of India</h3>
+                        <p class="project-desc">An AI-powered travel helper and journal platform for planning trips across India, logging travel history, and sharing travel logs.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/YTFL/Miles-Of-India" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-milesofindia">
+                                <i class="fa-brands fa-github"></i> Code
+                            </a>
+                            <a href="https://miles-of-india.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-milesofindia">
+                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer & Contact -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-brand">
+                YTFL<span>.</span>github.io
+            </div>
+            <ul class="footer-contact">
+                <li>
+                    <i class="fa-brands fa-discord"></i>
+                    <span>discord: <strong>therealytfl</strong></span>
+                </li>
+                <li>
+                    <i class="fa-regular fa-envelope"></i>
+                    <span>email: <a href="mailto:venkatpiyush327@gmail.com"><strong>venkatpiyush327@gmail.com</strong></a></span>
+                </li>
+            </ul>
+            <p class="copyright">
+                &copy; 2026 YTFL. All rights reserved. Built with clean code and modern aesthetics.
+            </p>
+        </div>
     </footer>
+
+    <!-- Interactive script -->
+    <script src="script.js"></script>
 </body>
 </html>
