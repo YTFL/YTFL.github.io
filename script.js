@@ -276,15 +276,13 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================================================
-// 4. Search & Category Filtering
+// 4. Search Filtering
 // ==========================================================================
-let currentCategory = 'all';
 let currentSearchQuery = '';
 
 function initSearchAndFilter() {
     const searchInput = document.getElementById('app-search');
     const searchClear = document.getElementById('search-clear');
-    const categoryChips = document.querySelectorAll('.category-chip');
     const resetBtn = document.getElementById('reset-search-btn');
 
     if (searchInput) {
@@ -314,29 +312,9 @@ function initSearchAndFilter() {
             if (searchInput) searchInput.value = '';
             currentSearchQuery = '';
             if (searchClear) searchClear.style.display = 'none';
-            setCategoryFilter('all');
+            applyFilters();
         });
     }
-
-    categoryChips.forEach(chip => {
-        chip.addEventListener('click', () => {
-            const category = chip.getAttribute('data-category');
-            setCategoryFilter(category);
-        });
-    });
-}
-
-function setCategoryFilter(category) {
-    currentCategory = category;
-    const categoryChips = document.querySelectorAll('.category-chip');
-    categoryChips.forEach(chip => {
-        if (chip.getAttribute('data-category') === category) {
-            chip.classList.add('active');
-        } else {
-            chip.classList.remove('active');
-        }
-    });
-    applyFilters();
 }
 
 function applyFilters() {
@@ -354,16 +332,6 @@ function applyFilters() {
         const app = APP_REGISTRY[appId];
         if (!app) return;
 
-        // Category filter
-        let categoryMatch = false;
-        if (currentCategory === 'all') {
-            categoryMatch = true;
-        } else if (currentCategory === 'mobile') {
-            categoryMatch = app.type === 'mobile';
-        } else if (currentCategory === 'web') {
-            categoryMatch = app.type === 'web';
-        }
-
         // Search query match
         let searchMatch = true;
         if (currentSearchQuery.length > 0) {
@@ -377,9 +345,7 @@ function applyFilters() {
             searchMatch = searchableText.includes(currentSearchQuery);
         }
 
-        const isVisible = categoryMatch && searchMatch;
-
-        if (isVisible) {
+        if (searchMatch) {
             card.style.display = '';
             totalVisible++;
             if (app.type === 'mobile') mobileVisible++;
