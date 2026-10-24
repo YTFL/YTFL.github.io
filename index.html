@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     
     <!-- SEO Optimization -->
-    <title>YTFL | Portfolio & Systems Engineer Hub</title>
-    <meta name="description" content="Official portfolio of YTFL. Discover developer tools, Progressive Web Apps, scalable backend systems, and automation-driven architectures.">
-    <meta name="keywords" content="YTFL, software engineer, backend developer, automation, systems, AttendMate, HonZuki, PDFark-Mode, SimpliMap, WarMatrix">
+    <title>YTFL.github.io | Applications & Project Hub</title>
+    <meta name="description" content="Official project hub of YTFL. Explore open-source mobile applications, web apps, tactical simulators, and developer tools.">
+    <meta name="keywords" content="YTFL, Lycoris, AttendMate, Canelé, SimpliMap, WarMatrix, Miles Of India, HonZuki, PDFark-Mode, Hash Table Simulator, Flutter, Next.js, React">
     <meta name="author" content="YTFL">
+    <meta name="theme-color" content="#06060a">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a0f'/><text x='50' y='64' font-family='sans-serif' font-weight='900' font-size='44' fill='%23ffffff' text-anchor='middle'>Y<tspan fill='%23e11d48'>.</tspan></text></svg>">
@@ -16,251 +17,549 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ytfl.github.io/">
-    <meta property="og:title" content="YTFL | Portfolio & Systems Engineer Hub">
-    <meta property="og:description" content="Discover developer tools, Progressive Web Apps, scalable backend systems, and automation-driven architectures by YTFL.">
+    <meta property="og:title" content="YTFL.github.io | Applications & Project Hub">
+    <meta property="og:description" content="Discover open-source mobile and web applications engineered by YTFL.">
     <meta property="og:image" content="https://github-readme-activity-graph.vercel.app/graph?username=YTFL&bg_color=000000&color=e11d48&line=e11d48&point=e11d48&area=true&hide_border=true">
 
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://ytfl.github.io/">
-    <meta property="twitter:title" content="YTFL | Portfolio & Systems Engineer Hub">
-    <meta property="twitter:description" content="Discover developer tools, Progressive Web Apps, scalable backend systems, and automation-driven architectures by YTFL.">
-
     <!-- Fonts & Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Local Stylesheet -->
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
 
-    <!-- Cyber Background Elements -->
-    <div class="bg-grid"></div>
-    <div class="bg-orbs">
+    <!-- Cyber Background Visuals -->
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-orbs" aria-hidden="true">
         <div class="orb orb-red"></div>
         <div class="orb orb-cyan"></div>
     </div>
-    <canvas id="particles-canvas"></canvas>
+    <canvas id="particles-canvas" aria-hidden="true"></canvas>
 
-    <!-- Sticky Navigation Bar -->
-    <header id="nav-header">
-        <div class="nav-container">
-            <a href="#hero" class="nav-logo" id="logo-link">
+    <!-- Top Sticky Navigation -->
+    <header class="store-header" id="store-header">
+        <div class="header-inner">
+            <!-- Brand Logo -->
+            <a href="#" class="nav-logo" id="logo-link">
                 YTFL<span>.</span>github.io
             </a>
-            <nav>
-                <ul class="nav-links">
-                    <li><a href="#hero" id="nav-home">Home</a></li>
-                    <li><a href="#projects" id="nav-projects">Projects</a></li>
-                    <li><a href="#contact" id="nav-contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="social-icons">
-                <a href="https://github.com/YTFL" target="_blank" rel="noopener" aria-label="GitHub" id="social-github">
+
+            <!-- Search Bar -->
+            <div class="store-search-container">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input 
+                    type="search" 
+                    id="app-search" 
+                    placeholder="Search projects by name, language, or tech..." 
+                    autocomplete="off"
+                    spellcheck="false"
+                    aria-label="Search applications"
+                >
+                <button class="search-clear-btn" id="search-clear" aria-label="Clear search" style="display: none;">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+                <div class="search-shortcut" title="Press '/' to focus search">/</div>
+            </div>
+
+            <!-- Header Social Links -->
+            <div class="header-actions">
+                <a href="https://github.com/YTFL" target="_blank" rel="noopener" class="icon-link" aria-label="GitHub Profile" title="GitHub">
                     <i class="fa-brands fa-github"></i>
                 </a>
-                <a href="mailto:venkatpiyush327@gmail.com" aria-label="Email" id="social-email">
+                <a href="mailto:venkatpiyush327@gmail.com" class="icon-link" aria-label="Email" title="Email">
                     <i class="fa-regular fa-envelope"></i>
                 </a>
             </div>
         </div>
+
+        <!-- Category Filter Tabs -->
+        <nav class="category-nav" aria-label="Filter applications">
+            <div class="category-scroll">
+                <button class="category-chip active" data-category="all" id="tab-all">
+                    <i class="fa-solid fa-border-all"></i>
+                    <span>All Applications</span>
+                    <span class="chip-count">9</span>
+                </button>
+                <button class="category-chip" data-category="mobile" id="tab-mobile">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                    <span>Mobile Apps</span>
+                    <span class="chip-count">4</span>
+                </button>
+                <button class="category-chip" data-category="web" id="tab-web">
+                    <i class="fa-solid fa-globe"></i>
+                    <span>Web Apps</span>
+                    <span class="chip-count">5</span>
+                </button>
+            </div>
+        </nav>
     </header>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero" id="hero">
-            <div class="hero-grid">
-                <!-- Left Column: Intro and CTAs -->
-                <div class="hero-info">
-                    <h1 class="hero-title">
-                        Building scalable, <br>
-                        <span class="hero-highlight">automation-driven</span> <br>
-                        systems.
-                    </h1>
-                    <p class="hero-desc">
-                        Hi, I'm YTFL. I design logic-driven tools to simplify complex processes, automate manual workflows, and build reliable backend architectures. Focused on clarity, optimization, and efficiency.
-                    </p>
-                    <div class="hero-actions">
-                        <a href="#projects" class="btn-portfolio btn-portfolio-primary" id="cta-projects">
-                            Explore Projects <i class="fa-solid fa-arrow-right"></i>
-                        </a>
-                        <a href="#contact" class="btn-portfolio btn-portfolio-secondary" id="cta-contact">
-                            Get In Touch
-                        </a>
-                    </div>
-                </div>
+    <main class="store-container">
 
-                <!-- Right Column: Interactive Code Editor Simulation -->
-                <div class="code-window-wrapper">
-                    <div class="code-window">
-                        <div class="window-header">
-                            <div class="window-dots">
-                                <div class="window-dot dot-red"></div>
-                                <div class="window-dot dot-yellow"></div>
-                                <div class="window-dot dot-green"></div>
-                            </div>
-                            <div class="window-title">fido@ytfl-terminal</div>
-                        </div>
-                        <div class="window-tab">
-                            <i class="fa-solid fa-code"></i> developer.json
-                        </div>
-                        <pre class="code-content"><code><span class="bracket">{</span>
-  <span class="key">"name"</span>: <span class="string">"YTFL"</span>,
-  <span class="key">"role"</span>: <span class="string">"Systems Engineer"</span>,
-  <span class="key">"focus"</span>: <span class="bracket">[</span>
-    <span class="string">"Automation"</span>,
-    <span class="string">"Scalable Backend"</span>,
-    <span class="string">"AI Workflows"</span>
-  <span class="bracket">]</span>,
-  <span class="key">"stack"</span>: <span class="bracket">{</span>
-    <span class="key">"primary"</span>: <span class="bracket">[</span><span class="string">"TypeScript"</span>, <span class="string">"Python"</span>, <span class="string">"Flutter"</span><span class="bracket">]</span>,
-    <span class="key">"frameworks"</span>: <span class="bracket">[</span><span class="string">"FastAPI"</span>, <span class="string">"React"</span>, <span class="string">"Next.js"</span><span class="bracket">]</span>,
-    <span class="key">"databases"</span>: <span class="bracket">[</span><span class="string">"MySQL"</span>, <span class="string">"MongoDB"</span>, <span class="string">"Firestore"</span><span class="bracket">]</span>
-  <span class="bracket">}</span>,
-  <span class="key">"philosophy"</span>: <span class="string">"Minimize manual loops, maximize logic flow."</span>
-<span class="bracket">}</span></code></pre>
-                    </div>
+        <!-- Featured Project Showcase Carousel -->
+        <section class="spotlight-section" id="spotlight-carousel" aria-label="Featured Applications">
+            <div class="spotlight-header">
+                <div class="spotlight-label">
+                    <span class="spotlight-pill">FEATURED RELEASES</span>
+                    <h1 class="spotlight-title">Featured Applications</h1>
                 </div>
+                <div class="carousel-controls" aria-label="Carousel navigation">
+                    <button class="carousel-btn prev-btn" id="carousel-prev" aria-label="Previous project">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <button class="carousel-btn next-btn" id="carousel-next" aria-label="Next project">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Dynamic Slider Area -->
+            <div class="spotlight-slider" id="spotlight-slider">
+                <!-- Dynamically populated via script.js using real repo data -->
+            </div>
+
+            <!-- Pagination Dots -->
+            <div class="carousel-indicators" id="carousel-indicators" role="tablist">
+                <button class="dot active" data-slide="0" role="tab" aria-label="Slide 1"></button>
+                <button class="dot" data-slide="1" role="tab" aria-label="Slide 2"></button>
+                <button class="dot" data-slide="2" role="tab" aria-label="Slide 3"></button>
+                <button class="dot" data-slide="3" role="tab" aria-label="Slide 4"></button>
             </div>
         </section>
 
+        <!-- Empty Search State -->
+        <div class="empty-search-state" id="empty-search-state" style="display: none;">
+            <div class="empty-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <h3>No matching projects found</h3>
+            <p>Try searching for a different framework, language, or keyword.</p>
+            <button class="btn-app btn-get" id="reset-search-btn">Reset Filter</button>
+        </div>
 
-
-        <!-- Projects Grid Section -->
-        <section class="section" id="projects">
-            <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
-                <p class="section-subtitle">A showcase of developer utilities, Progressive Web Apps, and multiplayer dashboards.</p>
+        <!-- ========================================== -->
+        <!-- SECTION 1: MOBILE APPLICATIONS            -->
+        <!-- ========================================== -->
+        <section class="store-section" id="mobile-apps" data-category-group="mobile">
+            <div class="section-title-wrap">
+                <div class="section-icon-badge mobile-badge">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </div>
+                <div class="section-heading">
+                    <h2 class="section-heading-text">Mobile Applications</h2>
+                    <p class="section-heading-sub">Offline-first, modular mobile applications built with Flutter and Dart.</p>
+                </div>
+                <div class="section-counter-badge">4 Apps</div>
             </div>
 
-            <div class="projects-grid">
-                <!-- AttendMate -->
-                <article class="project-card" id="project-attendmate">
-                    <div class="card-stripe"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">AttendMate</h3>
-                        <p class="project-desc">A smart student attendance tracker and bunk calculator featuring seamless Google Calendar synchronization and timetable scheduling.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/YTFL/AttendMate-Bunk-Calculator-Attendance-Tracker" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-attendmate">
-                                <i class="fa-brands fa-github"></i> Code
+            <div class="app-cards-grid" id="mobile-grid">
+
+                <!-- 1. Lycoris -->
+                <article class="store-card" data-app-id="lycoris" data-category="mobile" data-tags="mobile dart flutter gaming backlog roi offline-first android riverpod hive">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/lycoris.png" alt="Lycoris icon" class="app-icon-img icon-contain">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">Lycoris</h3>
+                                <p class="app-developer">Gaming Library & ROI Tracker</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            Sovereign, offline-first personal gaming library and financial ROI tracker. Catalog titles across Steam, Switch, PlayStation, Xbox, and GOG with itemized DLC tracking, continuous cost-per-hour calculations, pairwise head-to-head tier rankings, and a 10-star evaluation assistant. 100% private with zero telemetry and optional Google Drive sync.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Flutter</span>
+                            <span class="chip-tech">Dart</span>
+                            <span class="chip-tech">Riverpod</span>
+                            <span class="chip-tech">Hive</span>
+                            <span class="chip-tech">Android</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <span class="btn-store btn-disabled" data-download-for="lycoris" aria-label="Lycoris release coming soon">
+                                <i class="fa-solid fa-clock"></i> Coming Soon
+                            </span>
+                            <a href="https://github.com/YTFL/Lycoris" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View Lycoris on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
                             </a>
-                            <a href="https://ytfl.github.io/AttendMate-Bunk-Calculator-Attendance-Tracker/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-attendmate">
-                                <i class="fa-solid fa-circle-play"></i> Live Demo
-                            </a>
+                            <button class="btn-store btn-details" data-app-id="lycoris" aria-label="View Lycoris Details">
+                                Details
+                            </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- HonZuki -->
-                <article class="project-card" id="project-honzuki">
-                    <div class="card-stripe"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">HonZuki</h3>
-                        <p class="project-desc">A modern Progressive Web App (PWA) for organizing physical book collections, reading progress, series tracking, and dynamic themes.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/YTFL/HonZuki-BookTracker" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-honzuki">
-                                <i class="fa-brands fa-github"></i> Code
+                <!-- 2. AttendMate -->
+                <article class="store-card" data-app-id="attendmate" data-category="mobile" data-tags="mobile flutter dart attendance student bunk-calculator android sqlite">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/attendmate.png" alt="AttendMate icon" class="app-icon-img icon-contain">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">AttendMate</h3>
+                                <p class="app-developer">Student Attendance & Bunk Calculator</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            Attendance tracking app for students — track classes, calculate bunking capacity, auto-log attendance via geofencing, plan future leaves, and maintain target attendance percentage throughout the semester.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Flutter</span>
+                            <span class="chip-tech">Dart</span>
+                            <span class="chip-tech">SQLite</span>
+                            <span class="chip-tech">Android</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://github.com/YTFL/AttendMate-Bunk-Calculator-Attendance-Tracker/releases/download/v2.2.0/AttendMate-v2.2.0.apk" download class="btn-store btn-get" data-download-for="attendmate" aria-label="Download AttendMate APK">
+                                <i class="fa-solid fa-download"></i> Download App
                             </a>
-                            <a href="https://hon-zuki.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-honzuki">
-                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            <a href="https://github.com/YTFL/AttendMate-Bunk-Calculator-Attendance-Tracker" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View AttendMate on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
                             </a>
+                            <button class="btn-store btn-details" data-app-id="attendmate" aria-label="View AttendMate Details">
+                                Details
+                            </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- PDFark-Mode -->
-                <article class="project-card" id="project-pdfark">
-                    <div class="card-stripe"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">PDFark-Mode</h3>
-                        <p class="project-desc">A lightweight and fully private client-side converter that processes PDF files locally in your browser to transform them into high-contrast dark mode.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/YTFL/PDFark-Mode-PDF-Darkmode-Converter" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-pdfark">
-                                <i class="fa-brands fa-github"></i> Code
+                <!-- 3. Canelé -->
+                <article class="store-card" data-app-id="canele" data-category="mobile" data-tags="mobile flutter dart collection acquisition planner deterministic android riverpod hive">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/canele.jpg" alt="Canelé icon" class="app-icon-img icon-cover">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">Canelé</h3>
+                                <p class="app-developer">Collection Manager & Acquisition Planner</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            A local-first, modular acquisition planner and backlog pacing engine for physical collectors and hobbyists. Features deterministic priority waterfalls, isolated monthly quota ledgers, universal spreadsheet imports, and 100% offline privacy.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Flutter</span>
+                            <span class="chip-tech">Dart</span>
+                            <span class="chip-tech">Riverpod</span>
+                            <span class="chip-tech">Hive</span>
+                            <span class="chip-tech">Android</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://github.com/YTFL/Canele-Deterministic-Collection-Manager-Acquisition-Planner/releases/download/v1.1.1/Canele-v1.1.1.apk" download class="btn-store btn-get" data-download-for="canele" aria-label="Download Canelé APK">
+                                <i class="fa-solid fa-download"></i> Download App
                             </a>
-                            <a href="https://pdfark-mode.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-pdfark">
-                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            <a href="https://github.com/YTFL/Canele-Deterministic-Collection-Manager-Acquisition-Planner" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View Canelé on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
                             </a>
+                            <button class="btn-store btn-details" data-app-id="canele" aria-label="View Canelé Details">
+                                Details
+                            </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- SimpliMap -->
-                <article class="project-card" id="project-simplimap">
-                    <div class="card-stripe"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">SimpliMap</h3>
-                        <p class="project-desc">A Flutter application dedicated to generating, analyzing, and minimizing complex Boolean expressions using interactive Karnaugh Maps.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/YTFL/SimpliMap-K-map-Simplifier" class="btn-portfolio btn-portfolio-secondary" style="flex: 1;" target="_blank" rel="noopener" id="btn-code-simplimap">
-                                <i class="fa-brands fa-github"></i> View Repository
+                <!-- 4. SimpliMap -->
+                <article class="store-card" data-app-id="simplimap" data-category="mobile" data-tags="mobile flutter dart boolean-algebra karnaugh-map k-map digital-logic education">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/simplimap.png" alt="SimpliMap icon" class="app-icon-img icon-cover">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">SimpliMap</h3>
+                                <p class="app-developer">Karnaugh Map (K-Map) Simplifier</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            SimpliMap is a Flutter app for creating, visualizing and minimizing Boolean expressions using Karnaugh maps (K-maps). It provides a solver UI, step-by-step minimization, and components to explore K-map grouping and simplified expressions.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Flutter</span>
+                            <span class="chip-tech">Dart</span>
+                            <span class="chip-tech">Boolean Algebra</span>
+                            <span class="chip-tech">Digital Logic</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://github.com/YTFL/SimpliMap-K-map-Simplifier/releases/download/v1.0.0/SimpliMap.-.v1.0.0.apk" download class="btn-store btn-get" data-download-for="simplimap" aria-label="Download SimpliMap APK">
+                                <i class="fa-solid fa-download"></i> Download App
                             </a>
+                            <a href="https://github.com/YTFL/SimpliMap-K-map-Simplifier" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View SimpliMap on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
+                            </a>
+                            <button class="btn-store btn-details" data-app-id="simplimap" aria-label="View SimpliMap Details">
+                                Details
+                            </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- WarMatrix -->
-                <article class="project-card" id="project-warmatrix">
-                    <div class="card-stripe"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">WarMatrix</h3>
-                        <p class="project-desc">A futuristic strategy board game platform equipped with multiplayer modes, dynamic battlefields, and client-server synchronization.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/YTFL/WarMatrix" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-warmatrix">
-                                <i class="fa-brands fa-github"></i> Code
+            </div>
+        </section>
+
+        <!-- ========================================== -->
+        <!-- SECTION 2: WEB APPLICATIONS               -->
+        <!-- ========================================== -->
+        <section class="store-section" id="web-apps" data-category-group="web">
+            <div class="section-title-wrap">
+                <div class="section-icon-badge web-badge">
+                    <i class="fa-solid fa-globe"></i>
+                </div>
+                <div class="section-heading">
+                    <h2 class="section-heading-text">Web Applications</h2>
+                    <p class="section-heading-sub">Tactical simulation platforms, travel assistants, converters, and algorithm visualizers.</p>
+                </div>
+                <div class="section-counter-badge">5 Apps</div>
+            </div>
+
+            <div class="app-cards-grid" id="web-grid">
+
+                <!-- 5. WarMatrix -->
+                <article class="store-card" data-app-id="warmatrix" data-category="web" data-tags="web next.js react three.js fastapi typescript tactical simulation 3d">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/warmatrix.png" alt="WarMatrix icon" class="app-icon-img icon-cover">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">WarMatrix</h3>
+                                <p class="app-developer">Tactical Simulation Console</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            WarMatrix is a tactical simulation and command console application featuring a 3D tactical map interface, a scalable backend simulation engine, and an AI integration layer for an immersive operational dashboard.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Next.js 15</span>
+                            <span class="chip-tech">Three.js</span>
+                            <span class="chip-tech">FastAPI</span>
+                            <span class="chip-tech">TypeScript</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://warmatrix.vercel.app" target="_blank" rel="noopener" class="btn-store btn-get" aria-label="Open WarMatrix Live">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
                             </a>
-                            <a href="https://warmatrix.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-warmatrix">
-                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            <a href="https://github.com/YTFL/WarMatrix" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View WarMatrix on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
                             </a>
+                            <button class="btn-store btn-details" data-app-id="warmatrix" aria-label="View WarMatrix Details">
+                                Details
+                            </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- HireLoop -->
-                <article class="project-card" id="project-hireloop">
-                    <div class="card-stripe"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">HireLoop</h3>
-                        <p class="project-desc">A comprehensive platform that automates and streamlines campus recruitment cycles for students, recruiters, and placement portals.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/YTFL/HireLoop" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-hireloop">
-                                <i class="fa-brands fa-github"></i> Code
+                <!-- 6. Miles Of India -->
+                <article class="store-card" data-app-id="milesofindia" data-category="web" data-tags="web next.js react typescript firebase google-gemini travel india itinerary">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/milesofindia.png" alt="Miles Of India icon" class="app-icon-img icon-cover">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">Miles Of India</h3>
+                                <p class="app-developer">AI Travel Companion & Diary</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            An AI-powered travel companion to plan, document, and discover journeys across India. Features intelligent itinerary generation, a smart travel diary, and a gamified community feed.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Next.js</span>
+                            <span class="chip-tech">TypeScript</span>
+                            <span class="chip-tech">Google Gemini</span>
+                            <span class="chip-tech">Firebase</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://miles-of-india.vercel.app" target="_blank" rel="noopener" class="btn-store btn-get" aria-label="Open Miles Of India Live">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
                             </a>
-                            <a href="https://hire-loop-gamma.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-hireloop">
-                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            <a href="https://github.com/YTFL/Miles-Of-India" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View Miles Of India on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
                             </a>
+                            <button class="btn-store btn-details" data-app-id="milesofindia" aria-label="View Miles Of India Details">
+                                Details
+                            </button>
                         </div>
                     </div>
                 </article>
 
-                <!-- Miles of India -->
-                <article class="project-card" id="project-milesofindia">
-                    <div class="card-stripe"></div>
-                    <div class="project-info">
-                        <h3 class="project-title">Miles of India</h3>
-                        <p class="project-desc">An AI-powered travel helper and journal platform for planning trips across India, logging travel history, and sharing travel logs.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/YTFL/Miles-Of-India" class="btn-portfolio btn-portfolio-secondary" target="_blank" rel="noopener" id="btn-code-milesofindia">
-                                <i class="fa-brands fa-github"></i> Code
+                <!-- 7. HonZuki -->
+                <article class="store-card" data-app-id="honzuki" data-category="web" data-tags="web next.js react typescript firebase pwa book-tracker library">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/honzuki.png" alt="HonZuki icon" class="app-icon-img icon-contain">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">HonZuki</h3>
+                                <p class="app-developer">Book Collection & Progress Tracker</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            A modern Progressive Web App for managing your physical book collection. Track reading progress, organize with custom shelves, manage series, and enjoy beautiful adaptive themes. Available as web app and Android APK.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Next.js</span>
+                            <span class="chip-tech">React</span>
+                            <span class="chip-tech">TypeScript</span>
+                            <span class="chip-tech">PWA</span>
+                            <span class="chip-tech">Firebase</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://hon-zuki.vercel.app" target="_blank" rel="noopener" class="btn-store btn-get" aria-label="Open HonZuki Live">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
                             </a>
-                            <a href="https://miles-of-india.vercel.app/" class="btn-portfolio btn-portfolio-primary" target="_blank" rel="noopener" id="btn-demo-milesofindia">
-                                <i class="fa-solid fa-circle-play"></i> Live Demo
+                            <a href="https://github.com/YTFL/HonZuki-BookTracker" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View HonZuki on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
                             </a>
+                            <button class="btn-store btn-details" data-app-id="honzuki" aria-label="View HonZuki Details">
+                                Details
+                            </button>
                         </div>
                     </div>
                 </article>
+
+                <!-- 8. PDFark-Mode -->
+                <article class="store-card" data-app-id="pdfark" data-category="web" data-tags="web next.js react typescript tailwindcss pdf dark-mode privacy-focused client-side">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/pdfark.png" alt="PDFark-Mode icon" class="app-icon-img icon-cover">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">PDFark-Mode</h3>
+                                <p class="app-developer">Client-Side PDF Theme Converter</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            Turn any PDF into a clean dark mode or standard light theme instantly. A private, client-side PDF mode converter built for late-night readers and traditional viewing.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">Next.js</span>
+                            <span class="chip-tech">React</span>
+                            <span class="chip-tech">TypeScript</span>
+                            <span class="chip-tech">Tailwind CSS</span>
+                            <span class="chip-tech">Client-Side</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://pdfark-mode.vercel.app/" target="_blank" rel="noopener" class="btn-store btn-get" aria-label="Open PDFark-Mode Live">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+                            </a>
+                            <a href="https://github.com/YTFL/PDFark-Mode-PDF-Darkmode-Converter" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View PDFark-Mode on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
+                            </a>
+                            <button class="btn-store btn-details" data-app-id="pdfark" aria-label="View PDFark-Mode Details">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- 9. Hash Table Simulator -->
+                <article class="store-card" data-app-id="hashtable" data-category="web" data-tags="web react typescript vite tailwind-css algorithms hash-table collision-resolution">
+                    <div class="card-inner">
+                        <div class="card-top">
+                            <div class="app-icon-squircle">
+                                <img src="assets/icons/hashtable.png" alt="Hash Table Simulator icon" class="app-icon-img icon-cover">
+                            </div>
+                            <div class="app-meta">
+                                <h3 class="app-name">Hash Table Simulator</h3>
+                                <p class="app-developer">Collision-Resolution Visualizer</p>
+                            </div>
+                        </div>
+
+                        <p class="app-summary">
+                            Hash Table Simulator is an interactive, front-end educational simulator for learning how hash tables work. It visualizes insertion, searching, and deletion across three collision-resolution strategies. The app shows each probe step in real time, highlights active cells, and logs every action so users can follow the exact execution path.
+                        </p>
+
+                        <div class="app-chips-row">
+                            <span class="chip-tech">React 19</span>
+                            <span class="chip-tech">TypeScript</span>
+                            <span class="chip-tech">Vite</span>
+                            <span class="chip-tech">Tailwind CSS</span>
+                        </div>
+
+                        <div class="card-footer">
+                            <a href="https://hash-simulator-ytfl.vercel.app/" target="_blank" rel="noopener" class="btn-store btn-get" aria-label="Open Hash Table Simulator Live">
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+                            </a>
+                            <a href="https://github.com/YTFL/Hash-Table-Simulator" target="_blank" rel="noopener" class="btn-store btn-secondary-store" aria-label="View Hash Table Simulator on GitHub">
+                                <i class="fa-brands fa-github"></i> Repository
+                            </a>
+                            <button class="btn-store btn-details" data-app-id="hashtable" aria-label="View Hash Table Simulator Details">
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
             </div>
         </section>
 
     </main>
 
-    <!-- Footer & Contact -->
-    <footer id="contact">
-        <div class="footer-content">
-            <div class="footer-brand">
-                YTFL<span>.</span>github.io
+    <!-- App Detail Modal Dialog -->
+    <div class="modal-overlay" id="app-modal" role="dialog" aria-modal="true" aria-labelledby="modal-app-name" aria-hidden="true" style="display: none;">
+        <div class="modal-backdrop" id="modal-backdrop"></div>
+        <div class="modal-container">
+            <div class="modal-drag-handle" aria-hidden="true"></div>
+            
+            <button class="modal-close-btn" id="modal-close" aria-label="Close dialog">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+
+            <div class="modal-content" id="modal-content">
+                <!-- Injected dynamically from authentic repository data via script.js -->
             </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="contact" class="store-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">
+                    YTFL<span>.</span>github.io
+                </a>
+                <p class="footer-description">
+                    Open-source mobile and web applications engineered with clean logic, offline-first architectures, and zero unnecessary telemetry.
+                </p>
+            </div>
+
             <ul class="footer-contact">
+                <li>
+                    <i class="fa-brands fa-github"></i>
+                    <span>github: <a href="https://github.com/YTFL" target="_blank" rel="noopener"><strong>YTFL</strong></a></span>
+                </li>
                 <li>
                     <i class="fa-brands fa-discord"></i>
                     <span>discord: <strong>therealytfl</strong></span>
@@ -270,9 +569,9 @@
                     <span>email: <a href="mailto:venkatpiyush327@gmail.com"><strong>venkatpiyush327@gmail.com</strong></a></span>
                 </li>
             </ul>
-            <p class="copyright">
-                &copy; 2026 YTFL. All rights reserved. Built with clean code and modern aesthetics.
-            </p>
+        </div>
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 YTFL. All rights reserved. Open-source software.</p>
         </div>
     </footer>
 
