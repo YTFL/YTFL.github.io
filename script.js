@@ -217,50 +217,31 @@ const APP_REGISTRY = {
 };
 
 // ==========================================================================
-// 2. Featured Projects Carousel Slides
+// 2. Dynamic Random Featured Projects Generator
 // ==========================================================================
-const SPOTLIGHT_SLIDES = [
-    {
-        appId: 'warmatrix',
-        title: 'WarMatrix',
-        tagline: 'AI-Enabled Tactical Simulation Console',
-        description: 'WarMatrix is a tactical simulation and command console application featuring a 3D tactical map interface, a scalable backend simulation engine, and an AI integration layer for an immersive operational dashboard.',
-        isMobile: false,
-        launchUrl: 'https://warmatrix.vercel.app',
-        githubUrl: 'https://github.com/YTFL/WarMatrix',
-        tech: ['Next.js 15', 'Three.js', 'FastAPI', 'TypeScript']
-    },
-    {
-        appId: 'lycoris',
-        title: 'Lycoris',
-        tagline: 'Personal Gaming Library & Financial ROI Tracker',
-        description: 'Sovereign, offline-first personal gaming library and financial ROI tracker. Catalog titles across Steam, Switch, PlayStation, Xbox, and GOG with itemized DLC tracking and continuous cost-per-hour calculations.',
-        isMobile: true,
-        apkUrl: null,
-        githubUrl: 'https://github.com/YTFL/Lycoris',
-        tech: ['Flutter', 'Dart', 'Riverpod', 'Hive']
-    },
-    {
-        appId: 'attendmate',
-        title: 'AttendMate',
-        tagline: 'Student Attendance Tracker & Bunk Calculator',
-        description: 'Attendance tracking app for students — track classes, calculate bunking capacity, auto-log attendance via geofencing, plan future leaves, and maintain target attendance percentage throughout the semester.',
-        isMobile: true,
-        apkUrl: 'https://github.com/YTFL/AttendMate-Bunk-Calculator-Attendance-Tracker/releases/download/v2.2.0/AttendMate-v2.2.0.apk',
-        githubUrl: 'https://github.com/YTFL/AttendMate-Bunk-Calculator-Attendance-Tracker',
-        tech: ['Flutter', 'Dart', 'SQLite', 'Android']
-    },
-    {
-        appId: 'honzuki',
-        title: 'HonZuki',
-        tagline: 'Personal Book Sanctuary & Reading Tracker',
-        description: 'A modern Progressive Web App for managing your physical book collection. Track reading progress, organize with custom shelves, manage series, and enjoy beautiful adaptive themes.',
-        isMobile: false,
-        launchUrl: 'https://hon-zuki.vercel.app',
-        githubUrl: 'https://github.com/YTFL/HonZuki-BookTracker',
-        tech: ['Next.js', 'React', 'TypeScript', 'PWA']
+function getRandomSpotlightSlides(count = 4) {
+    const allApps = Object.values(APP_REGISTRY);
+    const shuffled = [...allApps];
+    // Fisher-Yates shuffle
+    for (let i = shuffled.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
     }
-];
+    const selected = shuffled.slice(0, count);
+    return selected.map(app => ({
+        appId: app.id,
+        title: app.title,
+        tagline: app.subtitle,
+        description: app.summary,
+        isMobile: app.type === 'mobile',
+        launchUrl: app.demo,
+        apkUrl: app.apkUrl,
+        githubUrl: app.github,
+        tech: app.tech.slice(0, 4)
+    }));
+}
+
+let SPOTLIGHT_SLIDES = getRandomSpotlightSlides(4);
 
 // ==========================================================================
 // 3. Initialization
@@ -270,7 +251,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpotlightCarousel();
     initModalSheet();
     initCardInteractions();
-    initViewSwitcher();
     initAmbientParticles();
     initKeyboardShortcuts();
     syncMobileReleases();
@@ -858,35 +838,5 @@ function syncMobileReleases() {
             .catch(() => {
                 // Keep verified defaults on network failure or rate limit
             });
-    });
-}
-
-// ==========================================================================
-// 11. Google Play Store View Switcher (List vs 3-Column Shelf Grid)
-// ==========================================================================
-function initViewSwitcher() {
-    const toggleBtns = document.querySelectorAll('.view-toggle-btn');
-    toggleBtns.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            const gridId = btn.getAttribute('data-grid-id');
-            const viewMode = btn.getAttribute('data-view');
-            const grid = document.getElementById(gridId);
-            if (!grid) return;
-
-            const wrap = btn.closest('.view-toggle-wrap');
-            if (wrap) {
-                wrap.querySelectorAll('.view-toggle-btn').forEach(b => b.classList.remove('active'));
-            }
-            btn.classList.add('active');
-
-            if (viewMode === 'grid') {
-                grid.classList.add('view-grid');
-                grid.classList.remove('view-list');
-            } else {
-                grid.classList.add('view-list');
-                grid.classList.remove('view-grid');
-            }
-        });
     });
 }
