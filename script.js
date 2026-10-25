@@ -270,6 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpotlightCarousel();
     initModalSheet();
     initCardInteractions();
+    initViewSwitcher();
     initAmbientParticles();
     initKeyboardShortcuts();
     syncMobileReleases();
@@ -857,5 +858,35 @@ function syncMobileReleases() {
             .catch(() => {
                 // Keep verified defaults on network failure or rate limit
             });
+    });
+}
+
+// ==========================================================================
+// 11. Google Play Store View Switcher (List vs 3-Column Shelf Grid)
+// ==========================================================================
+function initViewSwitcher() {
+    const toggleBtns = document.querySelectorAll('.view-toggle-btn');
+    toggleBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const gridId = btn.getAttribute('data-grid-id');
+            const viewMode = btn.getAttribute('data-view');
+            const grid = document.getElementById(gridId);
+            if (!grid) return;
+
+            const wrap = btn.closest('.view-toggle-wrap');
+            if (wrap) {
+                wrap.querySelectorAll('.view-toggle-btn').forEach(b => b.classList.remove('active'));
+            }
+            btn.classList.add('active');
+
+            if (viewMode === 'grid') {
+                grid.classList.add('view-grid');
+                grid.classList.remove('view-list');
+            } else {
+                grid.classList.add('view-list');
+                grid.classList.remove('view-grid');
+            }
+        });
     });
 }

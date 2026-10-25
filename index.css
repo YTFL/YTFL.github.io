@@ -65,6 +65,9 @@ html {
     scrollbar-width: thin;
     scrollbar-color: var(--accent-red) var(--bg-base);
     font-size: 16px;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
 }
 
 body {
@@ -78,6 +81,8 @@ body {
     flex-direction: column;
     position: relative;
     padding-top: calc(72px + var(--sat));
+    width: 100%;
+    max-width: 100%;
 }
 
 body.modal-open {
@@ -105,8 +110,9 @@ body.modal-open {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    width: 100%;
+    height: 100%;
     z-index: -3;
     background-image: 
         linear-gradient(rgba(225, 29, 72, 0.02) 1px, transparent 1px),
@@ -119,8 +125,9 @@ body.modal-open {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    width: 100%;
+    height: 100%;
     z-index: -2;
     overflow: hidden;
     pointer-events: none;
@@ -161,8 +168,9 @@ body.modal-open {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    width: 100%;
+    height: 100%;
     z-index: -1;
     pointer-events: none;
 }
@@ -189,6 +197,13 @@ body.modal-open {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
+    width: 100%;
+}
+
+.header-brand-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /* Brand Logo (YTFL.github.io) */
@@ -580,6 +595,13 @@ body.modal-open {
     color: var(--text-muted);
 }
 
+.section-meta-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
 .section-counter-badge {
     font-family: var(--font-mono);
     font-size: 0.75rem;
@@ -588,6 +610,43 @@ body.modal-open {
     border: 1px solid var(--border-glass);
     padding: 4px 10px;
     border-radius: var(--radius-pill);
+    white-space: nowrap;
+}
+
+.view-toggle-wrap {
+    display: inline-flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--border-glass);
+    border-radius: var(--radius-pill);
+    padding: 2px;
+    gap: 2px;
+}
+
+.view-toggle-btn {
+    width: 32px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    font-size: 0.82rem;
+    transition: var(--transition-fast);
+}
+
+.view-toggle-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.view-toggle-btn.active {
+    background: var(--accent-red);
+    color: #ffffff;
+    box-shadow: 0 2px 8px var(--accent-red-glow);
 }
 
 /* --- App Cards Grid & Design --- */
@@ -851,8 +910,10 @@ body.modal-open {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
     z-index: 1000;
     display: flex;
     align-items: center;
@@ -1056,6 +1117,7 @@ body.modal-open {
 .modal-specs-table td:last-child {
     color: var(--text-primary);
     font-family: var(--font-mono);
+    word-break: break-word;
 }
 
 /* --- Footer --- */
@@ -1125,83 +1187,86 @@ body.modal-open {
 }
 
 /* ==========================================================================
-   MOBILE & RESPONSIVE BREAKPOINTS
+   MOBILE & RESPONSIVE BREAKPOINTS (AUTHENTIC GOOGLE PLAY STORE DESIGN)
    ========================================================================== */
 
+/* Tablet & Medium Screens */
 @media (max-width: 1024px) and (min-width: 769px) {
     .app-cards-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
     }
 }
 
-@media (max-width: 480px) {
-    .app-cards-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 6px;
-    }
-
-    .store-card {
-        padding: 8px 4px 8px 4px;
-        border-radius: 12px;
-    }
-
-    .app-icon-squircle {
-        width: 52px;
-        height: 52px;
-        border-radius: 12px;
-    }
-
-    .app-name {
-        font-size: 0.74rem;
-        min-height: 2em;
-    }
-
-    .app-developer {
-        font-size: 0.62rem;
-    }
-
-    .btn-store {
-        padding: 4px 4px;
-        font-size: 0.62rem;
-        min-height: 24px;
-    }
-
-    .btn-store i {
-        font-size: 0.58rem;
-    }
-
-    .btn-store.btn-details {
-        padding: 3px 4px;
-        font-size: 0.6rem;
-    }
-}
-
+/* Mobile Devices (<= 768px) - Authentic Play Store Experience */
 @media (max-width: 768px) {
     body {
-        padding-top: calc(64px + var(--sat));
+        padding-top: calc(96px + var(--sat));
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    /* Play Store Sticky Top App Bar */
+    .store-header {
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .header-inner {
-        padding: 10px 16px;
-        gap: 10px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 
+            "brand actions"
+            "search search";
+        gap: 8px;
+        padding: 8px 14px 10px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .header-brand-row {
+        grid-area: brand;
+        display: flex;
+        align-items: center;
+    }
+
+    .header-actions {
+        grid-area: actions;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .nav-logo {
         font-size: 1.15rem;
     }
 
-    .store-search-container {
-        max-width: none;
+    .icon-link {
+        width: 34px;
+        height: 34px;
+        font-size: 0.9rem;
     }
 
-    .search-shortcut {
-        display: none;
+    /* Google Play Store Floating Search Pill */
+    .store-search-container {
+        grid-area: search;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        box-sizing: border-box;
     }
 
     #app-search {
-        height: 38px;
+        width: 100%;
+        height: 40px;
         font-size: 0.85rem;
-        padding-left: 34px;
+        padding-left: 36px;
+        padding-right: 36px;
+        box-sizing: border-box;
+        border-radius: var(--radius-pill);
+        background: rgba(20, 20, 32, 0.85);
     }
 
     .search-icon {
@@ -1209,176 +1274,95 @@ body.modal-open {
         font-size: 0.85rem;
     }
 
-    .store-container {
-        padding: 16px 12px 48px;
-        gap: 28px;
+    .search-shortcut {
+        display: none;
     }
 
-    /* Spotlight on Mobile */
+    .search-clear-btn {
+        right: 12px;
+    }
+
+    /* Store Container (Zero Overflow) */
+    .store-container {
+        padding: 14px 12px 48px;
+        gap: 26px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow-x: hidden;
+    }
+
+    /* Spotlight Hero Banner on Mobile */
     .spotlight-section {
-        padding: 16px;
+        padding: 16px 14px;
         border-radius: 18px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        overflow: hidden;
     }
 
     .spotlight-header {
         margin-bottom: 12px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .spotlight-title {
+        font-size: 1.35rem;
+    }
+
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.75rem;
     }
 
     .slide-title {
-        font-size: 1.4rem;
+        font-size: 1.35rem;
+        word-break: break-word;
     }
 
     .slide-tagline {
         font-size: 0.85rem;
+        margin-bottom: 8px;
     }
 
     .slide-description {
         font-size: 0.82rem;
         margin-bottom: 14px;
         line-height: 1.5;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
     }
 
     .slide-actions {
-        flex-direction: row;
+        display: flex;
         flex-wrap: wrap;
         gap: 8px;
         width: 100%;
+        box-sizing: border-box;
     }
 
     .slide-actions .btn-app {
-        flex: 1 1 auto;
-        min-width: 120px;
-        padding: 9px 14px;
-        font-size: 0.82rem;
-    }
-
-    /* Mobile 3-Column App Store Grid Showcase */
-    .app-cards-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-    }
-
-    .store-card {
-        padding: 10px 6px 10px 6px;
-        border-radius: 14px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        background: rgba(18, 18, 28, 0.75);
-    }
-
-    .store-card:hover {
-        transform: translateY(-2px);
-    }
-
-    .card-inner {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        height: 100%;
-    }
-
-    .card-top {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 6px;
-        width: 100%;
-    }
-
-    /* Squircle App Icons in 3-Column Grid */
-    .app-icon-squircle {
-        width: 60px;
-        height: 60px;
-        border-radius: 14px;
-        font-size: 1.5rem;
-        margin: 0 auto;
-    }
-
-    .app-meta {
-        width: 100%;
+        flex: 1 1 calc(50% - 8px);
+        min-width: 110px;
+        max-width: 100%;
+        padding: 9px 12px;
+        font-size: 0.8rem;
+        box-sizing: border-box;
+        justify-content: center;
         text-align: center;
     }
 
-    .app-name {
-        font-size: 0.82rem;
-        font-weight: 700;
-        line-height: 1.25;
-        white-space: normal;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        min-height: 2.1em;
-        margin-bottom: 2px;
-    }
-
-    .app-developer {
-        font-size: 0.68rem;
-        line-height: 1.2;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: block;
-        margin-top: 0;
-    }
-
-    /* Streamlined presentation for 3-column store shelf on mobile */
-    .app-summary {
-        display: none;
-    }
-
-    .app-chips-row {
-        display: none;
-    }
-
-    .card-footer {
+    /* Section Headings */
+    .section-title-wrap {
+        gap: 10px;
+        padding-bottom: 8px;
         width: 100%;
-        padding-top: 8px;
-        margin-top: auto;
-        gap: 4px;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-    }
-
-    .btn-store {
-        padding: 5px 6px;
-        font-size: 0.68rem;
-        font-weight: 700;
-        border-radius: var(--radius-pill);
-        gap: 4px;
-        width: 100%;
-        min-height: 28px;
-    }
-
-    .btn-store i {
-        font-size: 0.65rem;
-    }
-
-    .btn-store.btn-secondary-store {
-        display: none;
-    }
-
-    .btn-store.btn-details {
-        padding: 4px 6px;
-        font-size: 0.65rem;
-        background: rgba(255, 255, 255, 0.04);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        color: var(--text-muted);
-        display: flex;
-    }
-
-    .section-heading-text {
-        font-size: 1.15rem;
-    }
-
-    .section-heading-sub {
-        font-size: 0.78rem;
+        box-sizing: border-box;
     }
 
     .section-icon-badge {
@@ -1388,9 +1372,301 @@ body.modal-open {
         border-radius: 10px;
     }
 
+    .section-heading {
+        min-width: 0;
+    }
+
+    .section-heading-text {
+        font-size: 1.15rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .section-heading-sub {
+        font-size: 0.75rem;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+
+    .section-meta-right {
+        gap: 6px;
+    }
+
     .section-counter-badge {
         font-size: 0.68rem;
-        padding: 2px 8px;
+        padding: 2px 7px;
+    }
+
+    .view-toggle-btn {
+        width: 28px;
+        height: 26px;
+        font-size: 0.75rem;
+    }
+
+    /* ======================================================================
+       GOOGLE PLAY STORE - DEFAULT MOBILE LIST VIEW (.view-list or default)
+       ====================================================================== */
+    .app-cards-grid:not(.view-grid) {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .app-cards-grid:not(.view-grid) .store-card {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: rgba(18, 18, 28, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+    }
+
+    .app-cards-grid:not(.view-grid) .store-card:active {
+        background: rgba(26, 26, 42, 0.95);
+        transform: scale(0.99);
+    }
+
+    .app-cards-grid:not(.view-grid) .card-inner {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 100%;
+        min-width: 0;
+        gap: 12px;
+    }
+
+    .app-cards-grid:not(.view-grid) .card-top {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 12px;
+        flex: 1;
+        min-width: 0;
+        margin-bottom: 0;
+    }
+
+    /* Google Play Store 56px Squircle Icon */
+    .app-cards-grid:not(.view-grid) .app-icon-squircle {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        flex-shrink: 0;
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    .app-cards-grid:not(.view-grid) .app-meta {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        text-align: left;
+    }
+
+    .app-cards-grid:not(.view-grid) .app-name {
+        font-size: 0.98rem;
+        font-weight: 700;
+        color: var(--text-primary);
+        line-height: 1.25;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+    }
+
+    .app-cards-grid:not(.view-grid) .app-developer {
+        font-size: 0.74rem;
+        color: var(--accent-cyan);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .app-cards-grid:not(.view-grid) .app-chips-row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow: hidden;
+        gap: 4px;
+        margin: 3px 0 0 0;
+    }
+
+    .app-cards-grid:not(.view-grid) .chip-tech {
+        font-size: 0.65rem;
+        padding: 2px 7px;
+        white-space: nowrap;
+        flex-shrink: 0;
+        color: var(--text-muted);
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .app-cards-grid:not(.view-grid) .app-summary {
+        display: none;
+    }
+
+    .app-cards-grid:not(.view-grid) .card-footer {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        justify-content: center;
+        flex-shrink: 0;
+        gap: 6px;
+        padding: 0;
+        border: none;
+        margin: 0;
+        width: auto;
+    }
+
+    .app-cards-grid:not(.view-grid) .btn-store.btn-get,
+    .app-cards-grid:not(.view-grid) .btn-store.btn-disabled {
+        padding: 7px 14px;
+        font-size: 0.78rem;
+        font-weight: 700;
+        border-radius: var(--radius-pill);
+        white-space: nowrap;
+        flex: 0 0 auto;
+        min-height: 32px;
+        gap: 5px;
+    }
+
+    .app-cards-grid:not(.view-grid) .btn-store.btn-secondary-store,
+    .app-cards-grid:not(.view-grid) .btn-store.btn-details {
+        display: none;
+    }
+
+    /* ======================================================================
+       GOOGLE PLAY STORE - 3-COLUMN SHELF GRID VIEW (.view-grid)
+       ====================================================================== */
+    .app-cards-grid.view-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .app-cards-grid.view-grid .store-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 10px 5px;
+        border-radius: 14px;
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+        min-width: 0;
+        overflow: hidden;
+        background: rgba(18, 18, 28, 0.85);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        cursor: pointer;
+    }
+
+    .app-cards-grid.view-grid .card-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        min-width: 0;
+        gap: 6px;
+        height: 100%;
+    }
+
+    .app-cards-grid.view-grid .card-top {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        min-width: 0;
+        gap: 6px;
+        margin-bottom: 0;
+    }
+
+    .app-cards-grid.view-grid .app-icon-squircle {
+        width: 52px;
+        height: 52px;
+        border-radius: 12px;
+        margin: 0 auto;
+        flex-shrink: 0;
+    }
+
+    .app-cards-grid.view-grid .app-meta {
+        width: 100%;
+        min-width: 0;
+        text-align: center;
+    }
+
+    .app-cards-grid.view-grid .app-name {
+        font-size: 0.76rem;
+        font-weight: 700;
+        line-height: 1.22;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-height: 2.1em;
+        text-align: center;
+        word-break: break-word;
+        margin: 0;
+    }
+
+    .app-cards-grid.view-grid .app-developer {
+        font-size: 0.62rem;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin: 2px 0 0 0;
+    }
+
+    .app-cards-grid.view-grid .app-summary,
+    .app-cards-grid.view-grid .app-chips-row,
+    .app-cards-grid.view-grid .btn-store.btn-secondary-store,
+    .app-cards-grid.view-grid .btn-store.btn-details {
+        display: none;
+    }
+
+    .app-cards-grid.view-grid .card-footer {
+        width: 100%;
+        padding: 0;
+        margin-top: auto;
+        align-items: stretch;
+        border: none;
+    }
+
+    .app-cards-grid.view-grid .btn-store.btn-get,
+    .app-cards-grid.view-grid .btn-store.btn-disabled {
+        width: 100%;
+        padding: 5px 2px;
+        font-size: 0.64rem;
+        min-height: 26px;
+        gap: 3px;
+        border-radius: var(--radius-pill);
+        box-sizing: border-box;
     }
 
     /* Mobile Bottom-Sheet Modal */
@@ -1406,6 +1682,7 @@ body.modal-open {
         border-bottom: none;
         animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         padding-bottom: calc(16px + var(--sab));
+        box-sizing: border-box;
     }
 
     @keyframes modalSlideUp {
@@ -1430,7 +1707,8 @@ body.modal-open {
     }
 
     .modal-content {
-        padding: 20px 18px;
+        padding: 20px 16px;
+        box-sizing: border-box;
     }
 
     .modal-header-top {
@@ -1439,13 +1717,13 @@ body.modal-open {
     }
 
     .modal-icon {
-        width: 64px;
-        height: 64px;
-        font-size: 1.8rem;
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
     }
 
     .modal-title-area h2 {
-        font-size: 1.35rem;
+        font-size: 1.3rem;
     }
 
     .modal-actions-bar {
@@ -1455,10 +1733,36 @@ body.modal-open {
 
     .modal-actions-bar .btn-app {
         width: 100%;
+        box-sizing: border-box;
     }
 
     .footer-container {
         flex-direction: column;
         gap: 24px;
+        padding: 0 16px;
+        box-sizing: border-box;
+    }
+}
+
+/* Extra Small Phones (<= 380px) */
+@media (max-width: 380px) {
+    .app-cards-grid.view-grid {
+        gap: 6px;
+    }
+
+    .app-cards-grid.view-grid .app-icon-squircle {
+        width: 46px;
+        height: 46px;
+        border-radius: 10px;
+    }
+
+    .app-cards-grid.view-grid .app-name {
+        font-size: 0.7rem;
+    }
+
+    .app-cards-grid.view-grid .btn-store.btn-get,
+    .app-cards-grid.view-grid .btn-store.btn-disabled {
+        font-size: 0.58rem;
+        min-height: 24px;
     }
 }
